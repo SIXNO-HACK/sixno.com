@@ -1,0 +1,129 @@
+$blue: #53a2be;
+$red: #d9594c;
+$yellow: #e0a458;
+$green: #419d78;
+$background1: #1a1a1a;
+$background2: #eee;
+
+//parloader
+$parloader-size: 65px;
+
+$ellipse-medium: ($parloader-size / 3.25);
+$ellipse-big: ($ellipse-medium * 1.25);
+$ellipse-smali: ($ellipse-medium / 0.75);
+
+$ellipse-base: ($parloader-size - $ellipse-medium) / 2;
+
+
+$ellipse-opacity: .64;
+
+// ระยะเวลา
+$parloader-duration: 5s;
+$ellipse-duration: $parloader-duration / 2;
+
+///global layout
+html, body {
+     width: 100%;
+     height: 100%;
+}
+
+body {
+    position: relative;
+    background-color: $background1;
+    animation: Body 5s ease-in-out infinite;
+}
+
+@keyframes Body {
+    40% {background-color: $background1; }
+    50% {background-color: $background2; }
+    90% {background-color: $background2; }
+    100% {background-color: $background1; }
+}
+
+.blue { background-color: $blue; }
+.red { background-color: $red; }
+.yellow { background-color: $yellow; }
+.green { background-color: $green; }
+
+//preloader
+.parloader {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $parloader-size;
+    height: $parloader-size;
+    margin-top: -($parloader-size / 2);
+    margin-right: -($parloader-size / 2);
+    transform: rotate(-45deg);
+    animation: Parloader $parloader-duration linear infinite ;
+}
+ 
+@keyframes Parloader {
+    to {
+        transform: rotate(-45deg + 360deg);
+    }
+}
+
+
+.ellipse {
+    display: block;
+    position: absolute;
+    width: $ellipse-medium;
+    height: $ellipse-medium;
+    border-radius: 50%;
+    opacity: $ellipse-opacity;
+}
+
+
+//blue 
+.ellipse.blue {
+    top:$ellipse-base;
+    left: $ellipse-base;
+    animation: Blue $ellipse-duration ease-in-out infinite ;
+}
+
+@keyframes  Blue {
+    25% {top: 0; left: 0; width: $ellipse-big; height: $ellipse-big; opacity: 1;}
+    50% {top: $ellipse-base; left: $ellipse-base; width: $ellipse-medium; height: $ellipse-medium; opacity: $ellipse-opacity;}
+    75% {top: 0; left: 0; width: $ellipse-smali; height: $ellipse-smali; opacity: 1;}
+}
+
+//red
+.ellipse.red {
+    top:$ellipse-base;
+    right: $ellipse-base;
+    animation: Red $ellipse-duration ease-in-out infinite ;
+}
+
+@keyframes  Red {
+    25% {top: 0; right: 0; width: $ellipse-smali; height: $ellipse-smali; opacity: 1;}
+    50% {top: $ellipse-base; right: $ellipse-base; width: $ellipse-medium; height: $ellipse-medium; opacity: $ellipse-opacity;}
+    75% {top: 0; right: 0; width: $ellipse-big; height: $ellipse-big; opacity: 1;}
+}
+
+//yellow
+.ellipse.yellow {
+    bottom:$ellipse-base;
+    right: $ellipse-base;
+    animation: Yellow $ellipse-duration ease-in-out infinite ;
+}
+
+@keyframes  Yellow {
+    25% {bottom: 0; right: 0; width: $ellipse-big; height: $ellipse-big; opacity: 1;}
+    50% {bottom: $ellipse-base; right: $ellipse-base; width: $ellipse-medium; height: $ellipse-medium; opacity: $ellipse-opacity;}
+    75% {bottom: 0; right: 0; width: $ellipse-smali; height: $ellipse-smali; opacity: 1;}
+}
+
+//green
+.ellipse.green {
+    bottom:$ellipse-base;
+    left: $ellipse-base;
+    animation: Green $ellipse-duration ease-in-out infinite ;
+}
+
+@keyframes  Green {
+    25% {bottom: 0; left: 0; width: $ellipse-smali; height: $ellipse-smali; opacity: 1;}
+    50% {bottom: $ellipse-base; left: $ellipse-base; width: $ellipse-medium; height: $ellipse-medium; opacity: $ellipse-opacity;}
+    75% {bottom: 0; left: 0; width: $ellipse-big; height: $ellipse-big; opacity: 1;}
+}
